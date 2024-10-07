@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [],
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "groupName": "all patch dependencies",
+      "groupSlug": "all-patches",
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+  ]
+}
