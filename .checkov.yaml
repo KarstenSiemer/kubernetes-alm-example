@@ -1,0 +1,4 @@
+skip-check:
+  - CKV_TF_1 # We dont want to use commit hashes
+  - CKV_K8S_11 # we dont want to set CPU Limits
+  - CKV_K8S_21 # Namespaces are always tf managed, so no need to check them
