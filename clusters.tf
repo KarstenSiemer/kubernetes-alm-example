@@ -31,14 +31,14 @@ resource "kind_cluster" "default" {
         EOT
       ]
       extra_port_mappings {
-        container_port = 80
         host_port      = each.value.http
+        container_port = each.value.nodePortHttp
         listen_address = each.value.api_server_address
         protocol       = "TCP"
       }
       extra_port_mappings {
-        container_port = 443
         host_port      = each.value.https
+        container_port = each.value.nodePortHttps
         listen_address = each.value.api_server_address
         protocol       = "TCP"
       }

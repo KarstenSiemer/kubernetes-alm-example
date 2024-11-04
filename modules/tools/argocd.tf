@@ -82,7 +82,7 @@ resource "helm_release" "argocd" {
     yamlencode({
       configs = {
         cm = {
-          url                              = "https://argocd.${var.env}.${var.domain}"
+          url                              = "http://argocd.${var.env}.${var.domain}:8080"
           "exec.enabled"                   = true
           "server.rbac.log.enforce.enable" = true
           "admin.enabled"                  = true
@@ -144,6 +144,37 @@ resource "helm_release" "argocd" {
         repositories = nonsensitive(local.repositories)
       }
     }),
+    # Argo Notification
+    yamlencode({
+      notifications = {
+        logFormat = "json"
+      }
+    }),
+    yamlencode({
+      notifications = {
+        argocdUrl = "http://argocd.${var.env}.${var.domain}:8080"
+      }
+    }),
+    yamlencode({
+      notifications = {
+        notifiers = local.notifications_notifiers
+      }
+    }),
+    yamlencode({
+      notifications = {
+        templates = local.notifications_templates
+      }
+    }),
+    yamlencode({
+      notifications = {
+        triggers = local.notifications_triggers
+      }
+    }),
+    yamlencode({
+      notifications = {
+        subscriptions = local.notifications_subscriptions_defaults
+      }
+    }),
   ]
 
   set_sensitive {
@@ -187,6 +218,15 @@ resource "helm_release" "argocd" {
       value = var.repositories[set_sensitive.key].ssh_private_key
     }
   }
+
+  dynamic "set_sensitive" {
+    for_each = local.notifications_app_enabled ? [1] : []
+    content {
+      name  = "notifications.secret.items.github-app-privateKey"
+      value = var.github_app_private_key
+    }
+  }
+
 }
 
 resource "helm_release" "argocd_projects" {

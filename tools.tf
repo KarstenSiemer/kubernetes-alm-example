@@ -10,8 +10,8 @@ module "tools_tools" {
   resource_prefix = local.resource_prefix
   clusters = { for k, v in local.envs : k =>
     {
-      env = k
-      http = v.http
+      env   = k
+      http  = v.http
       https = v.https
       # KinD provider returns cluster hosts as localhost, which ArgoCD cannot reach (logically)
       # Pass docker brige IP, which is reachable via ArgoCD with nodePort
@@ -28,8 +28,11 @@ module "tools_tools" {
       username        = "KarstenSiemer"
     }
   }
-  github_password   = var.github_password
-  server_secret_key = var.server_secret_key
+  github_password            = var.github_password
+  server_secret_key          = var.server_secret_key
+  github_app_id              = var.github_app_id
+  github_app_installation_id = var.github_app_installation_id
+  github_app_private_key     = var.github_app_private_key
 }
 
 module "tools_dev" {
