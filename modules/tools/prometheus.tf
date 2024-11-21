@@ -51,16 +51,23 @@ resource "helm_release" "prometheus-operator" {
         enableRemoteWriteReceiver               = local.install_tools_cluster
         remoteWrite = local.install_env_cluster ? [
           {
-            url  = "http://prometheus.tools.${var.domain}:${var.envs.tools.http}/api/v1/write"
+            url  = local.prometheus_remote_write_target
             name = "tools"
           }
         ] : []
         remoteWriteDashboards = local.install_env_cluster
+        externalLabels = {
+          env = var.env
+          agent_mode = tostring(local.install_env_cluster)
+        }
       }
       ingress = {
         enabled          = true
         ingressClassName = "nginx"
-        hosts            = ["prometheus.${var.env}.${var.domain}"]
+        hosts            = concat(
+          ["prometheus.${var.env}.${var.domain}"],
+          !local.install_env_cluster ? [local.prometheus_remote_write_fqdn] : []
+        )
         pathType         = "Prefix"
       }
     }

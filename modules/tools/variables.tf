@@ -90,3 +90,9 @@ variable "github_app_installation_id" {
   description = "The installation id of the GitHub app."
   default     = ""
 }
+
+variable "prometheus_remote_write_target" {
+  type = string
+  description = "The URL to send Prometheus metrics to."
+  default = ""
+}

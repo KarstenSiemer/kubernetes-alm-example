@@ -127,6 +127,14 @@ locals {
         when: app.status.operationState != nil and app.status.operationState.phase in ['Succeeded']
           and app.status.health.status == 'Healthy'
     EOF
+    "trigger.on-pr"                  = <<-EOF
+      - description: Application is synced and healthy. Triggered once per commit.
+        oncePer: app.status.operationState?.syncResult?.revision
+        send:
+        - app-pr
+        when: app.status.operationState != nil and app.status.operationState.phase in ['Succeeded']
+          and app.status.health.status == 'Healthy'
+    EOF
     "trigger.on-health-degraded"     = <<-EOF
       - description: Application has degraded
         send:
@@ -178,6 +186,14 @@ locals {
           content: |
             Application {{.app.metadata.name}} is now running {{ .app.status.sync.revision }} of deployments manifests.
             See more here: ${local.notifications_templates_target_url}
+    EOF
+    "template.app-pr"                  = <<-EOF
+      message: |
+        Application reconcilation was successful.
+      github:
+        status:
+          state: success
+          label: "argocd/app"
     EOF
     "template.app-created"             = <<-EOF
       message: |
@@ -240,4 +256,7 @@ locals {
           targetURL: "${local.notifications_templates_target_url}"
     EOF
   }
+
+  prometheus_remote_write_fqdn = join("", ["prometheus.", var.prometheus_remote_write_target, replace(var.domain, "127.0.0.1", "")])
+  prometheus_remote_write_target = join("", ["http://", local.prometheus_remote_write_fqdn, ":", var.envs.tools.nodePortHttp, "/api/v1/write"])
 }

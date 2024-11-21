@@ -27,6 +27,7 @@
 | <a name="input_github_app_installation_id"></a> [github\_app\_installation\_id](#input\_github\_app\_installation\_id) | The installation id of the GitHub app. | `string` | `""` | no |
 | <a name="input_github_app_private_key"></a> [github\_app\_private\_key](#input\_github\_app\_private\_key) | The private key used to connect to the GitHub. | `string` | `""` | no |
 | <a name="input_github_password"></a> [github\_password](#input\_github\_password) | The password used to connect to the GitHub. | `string` | `""` | no |
+| <a name="input_prometheus_remote_write_target"></a> [prometheus\_remote\_write\_target](#input\_prometheus\_remote\_write\_target) | The URL to send Prometheus metrics to. | `string` | `""` | no |
 | <a name="input_repositories"></a> [repositories](#input\_repositories) | Map of repositories and their configuration | <pre>map(object({<br/>    project         = optional(string, "")<br/>    type            = optional(string, "")<br/>    url             = optional(string, "")<br/>    username        = optional(string, "")<br/>    password        = optional(string, "")<br/>    enableOCI       = optional(bool, false)<br/>    ssh_private_key = optional(string, "")<br/>  }))</pre> | `{}` | no |
 | <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix for resource names | `string` | `"k8s"` | no |
 | <a name="input_server_secret_key"></a> [server\_secret\_key](#input\_server\_secret\_key) | The secret key used to encrypt secrets in the server. | `string` | `""` | no |
