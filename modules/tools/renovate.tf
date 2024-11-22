@@ -31,8 +31,7 @@ resource "helm_release" "renovate" {
         mendRnvPlatform            = "github"
         mendRnvEndpoint            = "https://api.github.com/"
         mendRnvCronJobSchedulerAll = "*/5 * * * *" # every 5 minutes
-        mendRnvCronAppSync         = "0 * * * *"   # once an hour
-        #mendRnvAutoDiscoverFilter  = "KarstenSiemer/BMMI"
+        mendRnvCronAppSync         = "*/5 * * * *"   # every 5 minutes
         mendRnvAdminApiEnabled   = true
         mendRnvLogHistoryTTLDays = "1"
         logLevel                 = "debug"
@@ -57,7 +56,7 @@ resource "helm_release" "renovate" {
     })),
     yamlencode({
       cachePersistence = {
-        enabled      = true
+        enabled      = false
         storageClass = "standard"
         size         = "10Gi"
       }
@@ -94,12 +93,12 @@ resource "helm_release" "renovate" {
     #    runAsNonRoot = true
     #  }
     #}),
-    yamlencode({
-      dummy_containerSecurityContext = {
-        runAsUser  = tonumber(var.user_info.user_id)
-        runAsGroup = tonumber(var.user_info.group_id)
-        fsGroup    = tonumber(var.user_info.group_id)
-      }
-    }),
+    #yamlencode({
+    #  containerSecurityContext = {
+    #    runAsUser  = tonumber(var.user_info.user_id)
+    #    runAsGroup = tonumber(var.user_info.user_id)
+    #    fsGroup    = tonumber(var.user_info.user_id)
+    #  }
+    #}),
   ]
 }
