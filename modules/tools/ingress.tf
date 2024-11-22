@@ -28,11 +28,15 @@ resource "helm_release" "ingress_nginx" {
         }
       }
       hostPort = {
-        enabled = true
+        enabled = false
       }
       terminationGracePeriodSeconds = 0
       service = {
         type = "NodePort"
+        nodePorts = {
+          http  = var.envs[var.env].nodePortHttp
+          https = var.envs[var.env].nodePortHttps
+        }
       }
       watchIngressWithoutClass = true
       nodeSelector = {

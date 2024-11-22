@@ -10,8 +10,8 @@ module "tools_tools" {
   resource_prefix = local.resource_prefix
   clusters = { for k, v in local.envs : k =>
     {
-      env = k
-      http = v.http
+      env   = k
+      http  = v.http
       https = v.https
       # KinD provider returns cluster hosts as localhost, which ArgoCD cannot reach (logically)
       # Pass docker brige IP, which is reachable via ArgoCD with nodePort
@@ -28,8 +28,14 @@ module "tools_tools" {
       username        = "KarstenSiemer"
     }
   }
-  github_password   = var.github_password
-  server_secret_key = var.server_secret_key
+  github_password                = var.github_password
+  server_secret_key              = var.server_secret_key
+  github_app_id                  = var.github_app_id
+  github_app_installation_id     = var.github_app_installation_id
+  github_app_private_key         = var.github_app_private_key
+  prometheus_remote_write_target = local.env_prometheus_remote_write_target
+  renovatebot_license            = var.renovatebot_license
+  user_info                      = data.external.user_info.result
 }
 
 module "tools_dev" {
@@ -39,9 +45,10 @@ module "tools_dev" {
     kubectl    = kubectl.dev
     kubernetes = kubernetes.dev
   }
-  env             = "dev"
-  envs            = local.envs
-  resource_prefix = local.resource_prefix
+  env                            = "dev"
+  envs                           = local.envs
+  resource_prefix                = local.resource_prefix
+  prometheus_remote_write_target = local.env_prometheus_remote_write_target
 }
 
 module "tools_test" {
@@ -51,9 +58,10 @@ module "tools_test" {
     kubectl    = kubectl.test
     kubernetes = kubernetes.test
   }
-  env             = "test"
-  envs            = local.envs
-  resource_prefix = local.resource_prefix
+  env                            = "test"
+  envs                           = local.envs
+  resource_prefix                = local.resource_prefix
+  prometheus_remote_write_target = local.env_prometheus_remote_write_target
 }
 
 module "tools_prod" {
@@ -63,7 +71,8 @@ module "tools_prod" {
     kubectl    = kubectl.prod
     kubernetes = kubernetes.prod
   }
-  env             = "prod"
-  envs            = local.envs
-  resource_prefix = local.resource_prefix
+  env                            = "prod"
+  envs                           = local.envs
+  resource_prefix                = local.resource_prefix
+  prometheus_remote_write_target = local.env_prometheus_remote_write_target
 }
