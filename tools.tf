@@ -34,6 +34,8 @@ module "tools_tools" {
   github_app_installation_id     = var.github_app_installation_id
   github_app_private_key         = var.github_app_private_key
   prometheus_remote_write_target = local.env_prometheus_remote_write_target
+  renovatebot_license            = var.renovatebot_license
+  user_info                      = data.external.user_info.result
 }
 
 module "tools_dev" {
@@ -43,9 +45,9 @@ module "tools_dev" {
     kubectl    = kubectl.dev
     kubernetes = kubernetes.dev
   }
-  env             = "dev"
-  envs            = local.envs
-  resource_prefix = local.resource_prefix
+  env                            = "dev"
+  envs                           = local.envs
+  resource_prefix                = local.resource_prefix
   prometheus_remote_write_target = local.env_prometheus_remote_write_target
 }
 
@@ -56,9 +58,9 @@ module "tools_test" {
     kubectl    = kubectl.test
     kubernetes = kubernetes.test
   }
-  env             = "test"
-  envs            = local.envs
-  resource_prefix = local.resource_prefix
+  env                            = "test"
+  envs                           = local.envs
+  resource_prefix                = local.resource_prefix
   prometheus_remote_write_target = local.env_prometheus_remote_write_target
 }
 
@@ -69,8 +71,8 @@ module "tools_prod" {
     kubectl    = kubectl.prod
     kubernetes = kubernetes.prod
   }
-  env             = "prod"
-  envs            = local.envs
-  resource_prefix = local.resource_prefix
+  env                            = "prod"
+  envs                           = local.envs
+  resource_prefix                = local.resource_prefix
   prometheus_remote_write_target = local.env_prometheus_remote_write_target
 }

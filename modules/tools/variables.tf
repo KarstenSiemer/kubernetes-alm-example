@@ -92,7 +92,24 @@ variable "github_app_installation_id" {
 }
 
 variable "prometheus_remote_write_target" {
-  type = string
+  type        = string
   description = "The URL to send Prometheus metrics to."
-  default = ""
+  default     = ""
+}
+
+variable "renovatebot_license" {
+  type        = string
+  default     = ""
+  nullable    = false
+  description = "The RenovateBot license key."
+}
+
+variable "user_info" {
+  type = object({
+    user_id  = optional(string, "1001")
+    group_id = optional(string, "2001")
+  })
+  description = "The user and group ids to use for the server."
+  nullable    = false
+  default     = {}
 }

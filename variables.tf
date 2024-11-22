@@ -33,3 +33,10 @@ variable "github_app_installation_id" {
   description = "The installation id of the GitHub app."
   default     = ""
 }
+
+variable "renovatebot_license" {
+  type        = string
+  default     = ""
+  nullable    = false
+  description = "The RenovateBot license key."
+}

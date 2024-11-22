@@ -9,6 +9,7 @@ Example flow for application lifecycles on kubernetes
 |------|------|
 | [kind_cluster.default](https://registry.terraform.io/providers/tehcyx/kind/latest/docs/resources/cluster) | resource |
 | [external_external.cluster_internal_control_plane_ip](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
+| [external_external.user_info](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
 
 ## Inputs
 
@@ -19,6 +20,7 @@ Example flow for application lifecycles on kubernetes
 | <a name="input_github_app_private_key"></a> [github\_app\_private\_key](#input\_github\_app\_private\_key) | The private key used to connect to the GitHub. | `string` | `""` | no |
 | <a name="input_github_password"></a> [github\_password](#input\_github\_password) | The password used to connect to the GitHub. | `string` | `""` | no |
 | <a name="input_github_ssh_private_key"></a> [github\_ssh\_private\_key](#input\_github\_ssh\_private\_key) | The private key used to connect to the GitHub. | `string` | `""` | no |
+| <a name="input_renovatebot_license"></a> [renovatebot\_license](#input\_renovatebot\_license) | The RenovateBot license key. | `string` | `""` | no |
 | <a name="input_server_secret_key"></a> [server\_secret\_key](#input\_server\_secret\_key) | The secret key used to encrypt secrets in the server. | `string` | `""` | no |
 
 ## Outputs

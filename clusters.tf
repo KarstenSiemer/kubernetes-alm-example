@@ -75,3 +75,17 @@ data "external" "cluster_internal_control_plane_ip" {
   program    = concat(["bash", "${path.module}/get_control_plane_ips.bash"], local.control_planes)
   depends_on = [kind_cluster.default]
 }
+
+# Get current user id and group id
+# This will be used for the security context of pods which mount local files to not get the
+# "Error: fatal: detected dubious ownership in repository at '...'
+# As git notices the wrong context of files because the user does not exist
+# Outputs as:
+#{
+#  "user_id": 501,
+#  "group_id": 20
+#}
+data "external" "user_info" {
+  program    = ["bash", "${path.module}/get_user_info.bash"]
+  depends_on = [kind_cluster.default]
+}

@@ -257,6 +257,6 @@ locals {
     EOF
   }
 
-  prometheus_remote_write_fqdn = join("", ["prometheus.", var.prometheus_remote_write_target, replace(var.domain, "127.0.0.1", "")])
+  prometheus_remote_write_fqdn   = join("", ["prometheus.", var.prometheus_remote_write_target, replace(var.domain, "127.0.0.1", "")])
   prometheus_remote_write_target = join("", ["http://", local.prometheus_remote_write_fqdn, ":", var.envs.tools.nodePortHttp, "/api/v1/write"])
 }

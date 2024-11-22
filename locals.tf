@@ -7,6 +7,6 @@ locals {
     prod  = { http = 5080, nodePortHttp = 30580, https = 5443, nodePortHttps = 30543, api_server_address = local.server_address, api_server_port = 63786 }
   }
   env_prometheus_remote_write_target = data.external.cluster_internal_control_plane_ip.result["${local.resource_prefix}-tools-control-plane"]
-  resource_prefix    = "ba"
-  shared_volume_path = pathexpand("${path.cwd}/shared-volume")
+  resource_prefix                    = "ba"
+  shared_volume_path                 = pathexpand("${path.cwd}/shared-volume")
 }
