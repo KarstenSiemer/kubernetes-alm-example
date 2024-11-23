@@ -1,6 +1,42 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":semanticCommits",
+    ":prImmediately",
+    ":prConcurrentLimitNone",
+    ":prHourlyLimitNone"
+  ],
+  "schedule": ["at any time"],
+  "ignorePaths": [],
+  "dependencyDashboard": true,
+  "automerge": false,
+  "automergeType": "pr",
+  "automergeStrategy": "rebase",
+  "kubernetes": {
+    "fileMatch": ["^deploy/.+\\.tf$"]
+  },
+  "terraform": {
+    "fileMatch": ["(^|/)\\.tf$"]
+  },
+  "prCreation": "immediate",
+  "rebaseWhen": "conflicted",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": false
+    },
+    {
+      "major": {
+        "semanticCommitType": "breaking"
+      },
+      "minor": {
+        "semanticCommitType": "feat"
+      },
+      "patch": {
+        "semanticCommitType": "fix"
+      }
+    }
   ]
 }
