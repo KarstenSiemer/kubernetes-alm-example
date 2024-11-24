@@ -32,7 +32,7 @@ terraform {
     }
     kind = {
       source  = "tehcyx/kind"
-      version = "~> 0"
+      version = ">= 0"
     }
     external = {
       source  = "hashicorp/external"
