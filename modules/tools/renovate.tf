@@ -5,7 +5,7 @@ resource "random_password" "renovate_admin_api" {
 }
 
 resource "helm_release" "renovate" {
-  count = local.install_tools_cluster ? 1 : 0
+  count = 0
 
   cleanup_on_fail   = false
   force_update      = false
@@ -27,14 +27,14 @@ resource "helm_release" "renovate" {
   values = [
     yamlencode({
       renovate = {
-        mendRnvAcceptTos           = "y"
-        mendRnvPlatform            = "github"
-        mendRnvEndpoint            = "https://api.github.com/"
-        mendRnvCronJobSchedulerAll = "*/5 * * * *" # every 5 minutes
-        mendRnvCronAppSync         = "*/5 * * * *"   # every 5 minutes
-        mendRnvAdminApiEnabled   = true
-        mendRnvLogHistoryTTLDays = "1"
-        logLevel                 = "debug"
+        mendRnvAcceptTos              = "y"
+        mendRnvPlatform               = "github"
+        mendRnvEndpoint               = "https://api.github.com/"
+        mendRnvCronJobSchedulerAll    = "*/10 * * * *" # every 10 minutes
+        mendRnvAdminApiEnabled        = true
+        mendRnvLogHistoryTTLDays      = "1"
+        logLevel                      = "info"
+        mendRnvWorkerExecutionTimeout = "2000"
       }
     }),
     yamlencode({

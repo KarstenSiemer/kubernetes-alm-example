@@ -93,7 +93,7 @@ resource "helm_release" "prometheus-operator" {
     }),
     yamlencode({
       nodeExporter = {
-        enabled = false
+        enabled = true
       }
     }),
     yamlencode({
@@ -118,7 +118,12 @@ resource "helm_release" "prometheus-operator" {
     }),
     yamlencode({
       kubelet = {
-        enabled = false
+        enabled = true
+        serviceMonitor = {
+          attachMetadate = {
+            node = true
+          }
+        }
       }
     }),
     yamlencode({
