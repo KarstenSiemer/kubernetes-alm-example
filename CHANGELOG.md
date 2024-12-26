@@ -1,3 +1,15 @@
+## [1.1.0](https://github.com/KarstenSiemer/kubernetes-alm-example/compare/v1.0.0...v1.1.0) (2024-12-26)
+
+### Features
+
+* **deps:** update helm release kube-prometheus-stack to v66.7.1 ([#14](https://github.com/KarstenSiemer/kubernetes-alm-example/issues/14)) ([ce6bcd6](https://github.com/KarstenSiemer/kubernetes-alm-example/commit/ce6bcd64ff9d3f716bd5a2a6c92c343f3b1633d6))
+* **deps:** update terraform helm to v2.17.0 ([#18](https://github.com/KarstenSiemer/kubernetes-alm-example/issues/18)) ([158fc37](https://github.com/KarstenSiemer/kubernetes-alm-example/commit/158fc37c0aa9f9e28590ef5df602b2d3398d1f12))
+* **deps:** update terraform kubernetes to v2.35.1 ([#13](https://github.com/KarstenSiemer/kubernetes-alm-example/issues/13)) ([c184af7](https://github.com/KarstenSiemer/kubernetes-alm-example/commit/c184af724f8f8b647c056f3927531c6b50127422))
+
+### Bug Fixes
+
+* **deps:** update helm release argo-cd to v7.7.11 ([#15](https://github.com/KarstenSiemer/kubernetes-alm-example/issues/15)) ([0ae8d14](https://github.com/KarstenSiemer/kubernetes-alm-example/commit/0ae8d1417204d86b58ef8ef79233b72169ef6189))
+
 ## 1.0.0 (2024-12-26)
 
 ### Features
