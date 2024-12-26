@@ -88,17 +88,17 @@ resource "helm_release" "renovate" {
         timeoutSeconds      = 3
       }
     }),
-    #yamlencode({
-    #  podSecurityContext = {
-    #    runAsNonRoot = true
-    #  }
-    #}),
-    #yamlencode({
-    #  containerSecurityContext = {
-    #    runAsUser  = tonumber(var.user_info.user_id)
-    #    runAsGroup = tonumber(var.user_info.user_id)
-    #    fsGroup    = tonumber(var.user_info.user_id)
-    #  }
-    #}),
+    yamlencode({
+      podSecurityContext = {
+        runAsNonRoot = true
+      }
+    }),
+    yamlencode({
+      containerSecurityContext = {
+        runAsUser  = tonumber(var.user_info.user_id)
+        runAsGroup = tonumber(var.user_info.user_id)
+        fsGroup    = tonumber(var.user_info.user_id)
+      }
+    }),
   ]
 }
