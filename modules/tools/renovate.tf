@@ -15,7 +15,7 @@ resource "helm_release" "renovate" {
   namespace         = "renovate"
   repository        = "https://mend.github.io/renovate-ce-ee"
   chart             = "mend-renovate-ce"
-  version           = "8.7.0"
+  version           = "9.1.1"
   timeout           = 900
   wait_for_jobs     = true
   create_namespace  = true
