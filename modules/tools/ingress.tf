@@ -7,7 +7,7 @@ resource "helm_release" "ingress_nginx" {
   namespace         = "kube-system"
   repository        = "https://kubernetes.github.io/ingress-nginx"
   chart             = "ingress-nginx"
-  version           = "4.11.3"
+  version           = "4.12.0"
   timeout           = 900
   wait_for_jobs     = true
 
