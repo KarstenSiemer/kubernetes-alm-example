@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/KarstenSiemer/kubernetes-alm-example/compare/v1.1.0...v1.1.1) (2025-01-06)
+
+### Bug Fixes
+
+* **tf:** add docs and bug fix ([#22](https://github.com/KarstenSiemer/kubernetes-alm-example/issues/22)) ([f6bee1c](https://github.com/KarstenSiemer/kubernetes-alm-example/commit/f6bee1cb1c112edf16c90cdc9d46debef3784f5b))
+
 ## [1.1.0](https://github.com/KarstenSiemer/kubernetes-alm-example/compare/v1.0.0...v1.1.0) (2024-12-26)
 
 ### Features
