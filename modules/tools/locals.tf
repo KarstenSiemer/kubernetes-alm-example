@@ -69,7 +69,7 @@ locals {
       }
     ]
     orphanedResources = {
-      warn = true
+      warn = k == "tools" ? false : true
     }
     permitOnlyProjectScopedClusters = k != "tools" ? true : false
   } }

@@ -3,15 +3,15 @@
 
 | Name | Type |
 |------|------|
-| [helm_release.argocd](https://registry.terraform.io/providers/hashicorp/helm/2.16.1/docs/resources/release) | resource |
-| [helm_release.argocd_apps](https://registry.terraform.io/providers/hashicorp/helm/2.16.1/docs/resources/release) | resource |
-| [helm_release.argocd_projects](https://registry.terraform.io/providers/hashicorp/helm/2.16.1/docs/resources/release) | resource |
-| [helm_release.cilium](https://registry.terraform.io/providers/hashicorp/helm/2.16.1/docs/resources/release) | resource |
-| [helm_release.ingress_nginx](https://registry.terraform.io/providers/hashicorp/helm/2.16.1/docs/resources/release) | resource |
-| [helm_release.prometheus-operator](https://registry.terraform.io/providers/hashicorp/helm/2.16.1/docs/resources/release) | resource |
-| [helm_release.renovate](https://registry.terraform.io/providers/hashicorp/helm/2.16.1/docs/resources/release) | resource |
+| [helm_release.argocd](https://registry.terraform.io/providers/hashicorp/helm/2.17.0/docs/resources/release) | resource |
+| [helm_release.argocd_apps](https://registry.terraform.io/providers/hashicorp/helm/2.17.0/docs/resources/release) | resource |
+| [helm_release.argocd_projects](https://registry.terraform.io/providers/hashicorp/helm/2.17.0/docs/resources/release) | resource |
+| [helm_release.cilium](https://registry.terraform.io/providers/hashicorp/helm/2.17.0/docs/resources/release) | resource |
+| [helm_release.ingress_nginx](https://registry.terraform.io/providers/hashicorp/helm/2.17.0/docs/resources/release) | resource |
+| [helm_release.prometheus-operator](https://registry.terraform.io/providers/hashicorp/helm/2.17.0/docs/resources/release) | resource |
+| [helm_release.renovate](https://registry.terraform.io/providers/hashicorp/helm/2.17.0/docs/resources/release) | resource |
 | [kubectl_manifest.prometheus_crd](https://registry.terraform.io/providers/alekc/kubectl/2.1.3/docs/resources/manifest) | resource |
-| [kubernetes_secret.argocd_admin](https://registry.terraform.io/providers/hashicorp/kubernetes/2.33.0/docs/resources/secret) | resource |
+| [kubernetes_secret.argocd_admin](https://registry.terraform.io/providers/hashicorp/kubernetes/2.35.1/docs/resources/secret) | resource |
 | [random_password.argocd_admin_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [random_password.renovate_admin_api](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [time_sleep.wait_30_seconds](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep) | resource |
