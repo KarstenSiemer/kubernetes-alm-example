@@ -238,7 +238,7 @@ resource "helm_release" "argocd_projects" {
   lint              = true
   namespace         = "argocd"
   name              = "argocd-projects"
-  version           = "2.0.2"
+  version           = "2.0.5"
   chart             = "argocd-apps"
   repository        = "https://argoproj.github.io/argo-helm"
   create_namespace  = false
@@ -266,7 +266,7 @@ resource "helm_release" "argocd_apps" {
   lint              = true
   namespace         = "argocd"
   name              = "argocd-apps"
-  version           = "2.0.2"
+  version           = "2.0.5"
   chart             = "argocd-apps"
   repository        = "https://argoproj.github.io/argo-helm"
   create_namespace  = false
