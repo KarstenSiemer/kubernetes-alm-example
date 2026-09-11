@@ -28,7 +28,7 @@ terraform {
     }
     random = {
       source  = "hashicorp/random"
-      version = "~> 3"
+      version = ">= 3"
     }
     kind = {
       source  = "tehcyx/kind"
